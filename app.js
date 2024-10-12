@@ -7,8 +7,7 @@ window.onload = function reverseIndex() {
   });
 };
 
-console.log(cards);
-const start = 200;
+const start = parallax.querySelector(".parallax__cards").offsetTop;
 const end = parallax.clientHeight + 300;
 const breakpoint = (end - start) / cards.length;
 
@@ -28,3 +27,29 @@ window.addEventListener("scroll", (e) => {
     );
   });
 });
+
+function resize() {
+  const parallaxWrapper = parallax.querySelector(".parallax__wrapper");
+  const parallaxContent = parallax.querySelector(".parallax__content");
+  const diff = window.innerHeight - parallaxContent.clientHeight;
+  console.log(diff, window.innerHeight, parallaxContent.clientHeight);
+  parallaxWrapper.style.top = `${diff < 0 ? diff : 0}px`;
+}
+window.addEventListener("load", resize);
+window.addEventListener("resize", resize);
+
+const headdings = Array.from(document.querySelectorAll(".parallax__headding"));
+(function drawLine() {
+  headdings.forEach((item) => {
+    item.classList.add("parallax__headding--drawLine");
+  });
+
+  function unDrawLine() {
+    headdings.forEach((item) => {
+      item.classList.remove("parallax__headding--drawLine");
+    });
+    setTimeout(() => drawLine(), 1500);
+  }
+
+  setTimeout(() => unDrawLine(), 5000);
+})();
