@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+
+body {
+  font-family: "Rubik", sans-serif;
+}
+
+.temp_one,
+.temp_two {
+  background-color: antiquewhite;
+  height: 100vh;
+}
+
+.container-1170px {
+  width: 100%;
+  max-width: 1170px;
+  margin-inline: auto;
+}
